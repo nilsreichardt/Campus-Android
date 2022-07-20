@@ -218,6 +218,13 @@
         <item name="android:padding">@dimen/material_default_padding</item>
     </style>
 
+    <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar</item>
+        <item name="colorControlNormal">@color/tum_light_gray</item>
+        <item name="colorControlActivated">@color/tum_blue</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">36dip</item>
+    </style>
 
     <!-- Customized Material Themes -->
     <style name="BlueButton" parent="Widget.MaterialComponents.Button">

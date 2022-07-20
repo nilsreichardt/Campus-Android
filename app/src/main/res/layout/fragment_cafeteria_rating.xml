@@ -6,6 +6,33 @@
     android:orientation="vertical"
     tools:context=".component.ui.cafeteriarating.CafeteriaRatingFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="blabla"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1"
+                android:progressBackgroundTint="@android:color/holo_orange_dark"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
     <include layout="@layout/toolbar" />
 
 
@@ -31,6 +58,7 @@
         </FrameLayout>
 
     </FrameLayout>
+
 
 
 </LinearLayout>

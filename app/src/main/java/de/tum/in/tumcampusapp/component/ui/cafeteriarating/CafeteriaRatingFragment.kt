@@ -12,10 +12,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import de.tum.`in`.tumcampusapp.R
+import de.tum.`in`.tumcampusapp.component.other.generic.fragment.FragmentForAccessingTumCabe
 import de.tum.`in`.tumcampusapp.databinding.FragmentCafeteriaRatingBinding
 
 
-class CafeteriaRatingFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
+R.layout.fragment_cafeteria_rating,
+R.string.cafeteria_rating
+), AdapterView.OnItemSelectedListener {
 
 
     private val binding by viewBinding(FragmentCafeteriaRatingBinding::bind)
@@ -37,7 +41,7 @@ class CafeteriaRatingFragment : Fragment(), AdapterView.OnItemSelectedListener {
     val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
 
     // Drop-down navigation
-    private val selectCafeteriasSpinner: Spinner
+/*    private val selectCafeteriasSpinner: Spinner
         get() {
 
             val groupAdapter = object : ArrayAdapter<String>(
@@ -62,7 +66,7 @@ class CafeteriaRatingFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 adapter = groupAdapter
                 onItemSelectedListener = this@CafeteriaRatingFragment
             }
-        }
+        }*/
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //todo toast mit id
@@ -91,7 +95,7 @@ class CafeteriaRatingFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private fun selectCurrentSpinnerItem() {
         cafeterias.forEachIndexed { i, a ->
 
-            selectCafeteriasSpinner.setSelection(i)
+          //  selectCafeteriasSpinner.setSelection(i)
 
         }
     }
