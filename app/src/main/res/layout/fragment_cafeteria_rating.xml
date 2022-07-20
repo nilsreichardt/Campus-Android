@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".component.ui.cafeteriarating.CafeteriaRatingFragment">
+
+    <include layout="@layout/toolbar" />
+
+
+    <FrameLayout
+        android:id="@+id/spinnerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/default_window_background"
+        tools:visibility="visible">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_small_padding"
+            android:background="@drawable/spinner_border_background">
+
+            <Spinner
+                android:id="@+id/pickCafeteriaSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
+
+
