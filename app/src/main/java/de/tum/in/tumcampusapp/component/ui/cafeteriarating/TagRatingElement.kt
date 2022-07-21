@@ -4,6 +4,7 @@ class TagRatingElement {
     var tagLabel: String="label"
     private var points=1
 
-
-
+    constructor(tagLabel: String) {
+        this.tagLabel = tagLabel
+    }
 }

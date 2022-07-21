@@ -32,8 +32,8 @@ class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
-        val meals = arrayOf("Nur die Cafeteria", "Pizza Margeritha")
+        val cafeterias = arrayOf("Mensa Garching", "mensa leopoldstrasse")
+        val meals = arrayOf("Only The Cafeteria", "Pizza Margeritha")
         //  binding.pickCafeteriaSpinner;
         //  val spinner = findViewById(R.id.pickCafeteriaSpinner)
         if (binding.pickCafeteriaSpinner != null) {
@@ -63,12 +63,12 @@ class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
     }
 
     private fun prepareItems() {
-        itemsList.add(TagRatingElement())
-        itemsList.add(TagRatingElement())
-        itemsList.add(TagRatingElement())
-        itemsList.add(TagRatingElement())
-        itemsList.add (TagRatingElement())
-        itemsList.add(TagRatingElement())
+        itemsList.add(TagRatingElement("Waiting time"))
+        itemsList.add(TagRatingElement("Variety General"))
+        itemsList.add(TagRatingElement("Variety Vegetarian"))
+        itemsList.add(TagRatingElement("Variety Vegan"))
+        itemsList.add (TagRatingElement("Enough free tables"))
+
 
 
 

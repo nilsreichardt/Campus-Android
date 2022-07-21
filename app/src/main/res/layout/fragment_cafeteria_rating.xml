@@ -46,22 +46,62 @@
 
         </FrameLayout>
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/material_small_padding"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveRating"
+                android:id="@+id/buttonaddremoveratingtag"
                 style="@style/BlueImageButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/material_small_padding"
+                android:layout_height="match_parent"
                 android:enabled="true"
-                android:textAllCaps="false"
+                android:layout_marginRight="@dimen/material_default_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:iconTint="@color/white"
                 app:cornerRadius="@dimen/material_corner_radius"
                 app:icon="@drawable/ic_baseline_photo_camera_24" />
+
+
+            <TextView
+                android:id="@+id/tagItemLabel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:text="Points:"
+              android:layout_marginLeft="@dimen/material_default_padding"
+                android:layout_marginRight="@dimen/material_default_padding"
+                app:autoSizeMaxTextSize="28sp"
+                app:autoSizeMinTextSize="10sp"
+
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ratingBar1232321"
+                app:layout_constraintStart_toEndOf="@+id/buttonaddremoveratingtag"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar1232321"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/addPhoto"
@@ -69,10 +109,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="true"
-                android:text="Foto hinzufügen"
+                android:text="Send Rating"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/material_corner_radius" />
-        </LinearLayout>
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -83,63 +123,29 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/material_default_padding"
-                        android:minHeight="32dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_gravity="center"
-                            android:minHeight="32dp"
-                            android:text="Bewertung:"
-                            app:autoSizeMaxTextSize="28sp"
-                            app:autoSizeMinTextSize="10sp"
-                            app:autoSizeTextType="uniform" />
-
-                        <RatingBar
-                            android:id="@+id/ratingBar"
-                            style="@style/CustomRatingBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="center"
-                            android:numStars="5"
-                            android:stepSize="1" />
-                    </RelativeLayout>
-
-
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:minHeight="48dp"
+                    android:layout_marginTop="@dimen/material_default_padding"
+                    android:text="Optional Fields"
+                    app:autoSizeMaxTextSize="28sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/material_default_padding"
+                    android:layout_marginBottom="@dimen/material_default_padding"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Comment (optional)"
+                    android:hint="Comment"
                     android:inputType="textMultiLine"
                     android:maxLength="256" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="32dp"
-                    android:text="Tags (optional)"
-                    app:autoSizeMaxTextSize="28sp"
-                    app:autoSizeMinTextSize="10sp"
-                    app:autoSizeTextType="uniform" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/tagOptionListRecyclerView"
