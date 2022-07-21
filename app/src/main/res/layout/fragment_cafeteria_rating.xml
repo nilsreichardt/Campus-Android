@@ -80,7 +80,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -92,7 +92,8 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxHeight="32dp"
+                        android:layout_marginTop="@dimen/material_default_padding"
+                        android:minHeight="32dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -100,9 +101,10 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentStart="true"
                             android:layout_gravity="center"
+                            android:minHeight="32dp"
                             android:text="Bewertung:"
                             app:autoSizeMaxTextSize="28sp"
-                            app:autoSizeMinTextSize="20sp"
+                            app:autoSizeMinTextSize="10sp"
                             app:autoSizeTextType="uniform" />
 
                         <RatingBar
@@ -123,6 +125,7 @@
                     android:id="@+id/editTextTextMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/material_default_padding"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="Comment (optional)"
@@ -132,14 +135,16 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:minHeight="32dp"
                     android:text="Tags (optional)"
                     app:autoSizeMaxTextSize="28sp"
-                    app:autoSizeMinTextSize="20sp"
+                    app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tagOptionListRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:scrollbars="vertical"
                     tools:listitem="@layout/list_item_rating_tag_large" />
 
