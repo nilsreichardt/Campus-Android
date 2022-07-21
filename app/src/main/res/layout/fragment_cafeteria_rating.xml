@@ -1,52 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".component.ui.cafeteriarating.CafeteriaRatingFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="blabla"
-            android:layout_weight="1"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="@style/CustomRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:progressBackgroundTint="@android:color/holo_orange_dark"
-                android:layout_weight="1"/>
-        </LinearLayout>
-    </LinearLayout>
-
     <include layout="@layout/toolbar" />
 
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/spinnerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_small_padding"
         android:background="@color/default_window_background"
+        android:orientation="vertical"
         tools:visibility="visible">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/material_small_padding"
             android:background="@drawable/spinner_border_background">
 
             <Spinner
@@ -57,8 +32,121 @@
 
         </FrameLayout>
 
-    </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_small_padding"
+            android:background="@drawable/spinner_border_background">
 
+            <Spinner
+                android:id="@+id/pickMealSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_small_padding"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveRating"
+                style="@style/BlueImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/material_small_padding"
+                android:enabled="true"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/material_corner_radius"
+                app:icon="@drawable/ic_baseline_photo_camera_24" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addPhoto"
+                style="@style/BlueButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="true"
+                android:text="Foto hinzufügen"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/material_corner_radius" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="32dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
+                            android:text="Bewertung:"
+                            app:autoSizeMaxTextSize="28sp"
+                            app:autoSizeMinTextSize="20sp"
+                            app:autoSizeTextType="uniform" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/CustomRatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:numStars="5"
+                            android:stepSize="1" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/editTextTextMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Comment (optional)"
+                    android:inputType="textMultiLine"
+                    android:maxLength="256" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Tags (optional)"
+                    app:autoSizeMaxTextSize="28sp"
+                    app:autoSizeMinTextSize="20sp"
+                    app:autoSizeTextType="uniform" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/list_item_rating_tag_large" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 
 </LinearLayout>

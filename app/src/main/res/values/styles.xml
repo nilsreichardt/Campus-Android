@@ -231,4 +231,8 @@
         <item name="android:backgroundTint">@color/default_button_background</item>
         <item name="iconTint">@color/text_primary</item>
     </style>
+
+    <style name="BlueImageButton" parent="Widget.MaterialComponents.TimePicker.ImageButton">
+        <item name="android:backgroundTint">@color/default_button_background</item>
+    </style>
 </resources>

@@ -14,31 +14,51 @@ import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import de.tum.`in`.tumcampusapp.R
 import de.tum.`in`.tumcampusapp.component.other.generic.fragment.FragmentForAccessingTumCabe
 import de.tum.`in`.tumcampusapp.databinding.FragmentCafeteriaRatingBinding
+import de.tum.`in`.tumcampusapp.databinding.FragmentGradesBinding
 
 
 class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
-R.layout.fragment_cafeteria_rating,
-R.string.cafeteria_rating
+        R.layout.fragment_cafeteria_rating,
+        R.string.cafeteria_rating
 ), AdapterView.OnItemSelectedListener {
 
 
     private val binding by viewBinding(FragmentCafeteriaRatingBinding::bind)
 
-    /*   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                 savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        /*val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
+        binding.pickCafeteriaSpinner;
+        //  val spinner = findViewById(R.id.pickCafeteriaSpinner)
+        if (binding.pickCafeteriaSpinner != null) {
+            val adapter = ArrayAdapter(requireContext(),
+                    android.R.layout.simple_spinner_item, cafeterias)
+            binding.pickCafeteriaSpinner.adapter = adapter
+        }*/
+    }
 
-           return inflater.inflate(R.layout.fragment_cafeteria_rating, container, false)
-           val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
-           //  binding.pickCafeteriaSpinner;
-           // val spinner = findViewById(R.id.pickCafeteriaSpinner)
-          /* if (binding.pickCafeteriaSpinner != null) {
-               val adapter = ArrayAdapter(requireContext(),
-                       android.R.layout.simple_spinner_item, cafeterias)
-               binding.pickCafeteriaSpinner.adapter = adapter
-           }*/
 
-       }*/
-    val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
+        val meals = arrayOf("Nur die Cafeteria", "Pizza Margeritha")
+      //  binding.pickCafeteriaSpinner;
+        //  val spinner = findViewById(R.id.pickCafeteriaSpinner)
+        if (binding.pickCafeteriaSpinner != null) {
+            val adapter = ArrayAdapter(requireContext(),
+                    android.R.layout.simple_spinner_dropdown_item, cafeterias)
+            binding.pickCafeteriaSpinner.adapter = adapter
+        }
+
+        if (binding.pickMealSpinner != null) {
+            val adapter = ArrayAdapter(requireContext(),
+                    android.R.layout.simple_spinner_dropdown_item, meals)
+            binding.pickMealSpinner.adapter = adapter
+        }
+
+
+    }
+    //  val cafeterias = arrayOf("mensa garching", "mensa leopoldstrasse")
 
     // Drop-down navigation
 /*    private val selectCafeteriasSpinner: Spinner
@@ -74,11 +94,11 @@ R.string.cafeteria_rating
 
     override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    /*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView: View = inflater.inflate(de.tum.`in`.tumcampusapp.R.layout.activity_cafeteria_rating, container, false)
         displayCafeterias()
         return rootView
-    }
+    }*/
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
@@ -86,20 +106,20 @@ R.string.cafeteria_rating
 //    }
 
 
-    private fun displayCafeterias() {
-        selectCurrentSpinnerItem()
-        // binding.spinnerContainer.visibility = View.VISIBLE
-        //  showLoadingEnded()
-    }
+    /*  private fun displayCafeterias() {
+          selectCurrentSpinnerItem()
+          // binding.spinnerContainer.visibility = View.VISIBLE
+          //  showLoadingEnded()
+      }
 
-    private fun selectCurrentSpinnerItem() {
-        cafeterias.forEachIndexed { i, a ->
+      private fun selectCurrentSpinnerItem() {
+          cafeterias.forEachIndexed { i, a ->
 
-          //  selectCafeteriasSpinner.setSelection(i)
+            //  selectCafeteriasSpinner.setSelection(i)
 
-        }
-    }
-
+          }
+      }
+  */
     companion object {
 
         private const val NONE_SELECTED = -1
