@@ -3,31 +3,34 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/blurHelper"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:backgroundTint="@color/white"
-    android:minHeight="24dp"
 
+    android:minHeight="24dp"
+    style="@style/StandardCard"
     app:cardCornerRadius="8dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/listItemHolderCardView"
         android:padding="8dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/showRatingImageViewHolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:padding="8dp"
+            android:visibility="gone"
             app:cardCornerRadius="8dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/showRatingImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -56,31 +59,30 @@
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ratingBarResult"
+                app:layout_constraintEnd_toStartOf="@+id/singleRatingPointsRatingBar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/ratingRsultNumberTextView"
+                android:id="@+id/ratingResultNumberTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4,5"
+                android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ratingBarResult"
+                app:layout_constraintEnd_toStartOf="@+id/singleRatingPointsRatingBar"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="8dp"
                />
 
             <RatingBar
-                android:id="@+id/ratingBarResult"
+                android:id="@+id/singleRatingPointsRatingBar"
                 style="@style/CustomRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="center"
                 android:numStars="5"
-                android:stepSize="0.1"
-                android:rating="4.5"
+                android:stepSize="1"
                 android:isIndicator="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,10 +94,11 @@
 
 
         <TextView
-            android:id="@+id/ratingComment"
+            android:id="@+id/ratingCommentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="2"
+            android:visibility="gone"
             android:text="Comment lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum "
             android:textSize="15sp" />
 
@@ -103,6 +106,7 @@
             android:id="@+id/chipGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_default_padding"
             app:singleLine="false">
 
         </com.google.android.material.chip.ChipGroup>

@@ -14,39 +14,36 @@ import de.tum.`in`.tumcampusapp.databinding.FragmentShowCafeteriaRatingsBinding
 class ShowCafeteriaRatingsFragment : FragmentForAccessingTumCabe<List<String>>(
     R.layout.fragment_show_cafeteria_ratings,
     R.string.view_cafeteria_rating
-), AdapterView.OnItemSelectedListener {
+){
 
 
     private val binding by viewBinding(FragmentShowCafeteriaRatingsBinding::bind)
 
 
-    private val itemsList = ArrayList<TagRatingElement>()
+    private val itemsList = ArrayList<ShowRatingAverage>()
     private lateinit var showTagRatingAdapter: ShowRatingAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cafeterias = arrayOf("Mensa Garching", "mensa leopoldstrasse")
+        val cafeterias = arrayOf("Mensa Garching", "Mensa Leopoldstrasse")
         val meals = arrayOf("Only The Cafeteria", "Pizza Margeritha")
-        //  binding.pickCafeteriaSpinner;
-        //  val spinner = findViewById(R.id.pickCafeteriaSpinner)
-        if (binding.pickCafeteriaShowSpinner != null) {
-            val adapter = ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_spinner_dropdown_item, cafeterias
-            )
-            binding.pickCafeteriaShowSpinner.adapter = adapter
-        }
 
-        if (binding.pickDishShowSpinner != null) {
-            val adapter = ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_spinner_dropdown_item, meals
-            )
-            binding.pickDishShowSpinner.adapter = adapter
-        }
+
+
+        binding.pickCafeteriaShowSpinner.adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item, cafeterias
+        )
+
+
+        binding.pickDishShowSpinner.adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item, meals
+        )
+
         prepareItems()
 
-        // val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+
         showTagRatingAdapter = ShowRatingAdapter(itemsList)
         val layoutManager = LinearLayoutManager(requireContext())
         binding.showSingleRatingsRecyclerView.layoutManager = layoutManager
@@ -54,28 +51,22 @@ class ShowCafeteriaRatingsFragment : FragmentForAccessingTumCabe<List<String>>(
     }
 
 
-
     private fun prepareItems() {
-        itemsList.add(TagRatingElement("Waiting time"))
-        itemsList.add(TagRatingElement("Variety General"))
-        itemsList.add(TagRatingElement("Variety Vegetarian"))
-        itemsList.add(TagRatingElement("Variety Vegan"))
-        itemsList.add(TagRatingElement("Enough free tables"))
+        val nameTagResults = listOf<ShowTagRatingAverage>(
+            ShowTagRatingAverage("clean",3.7,1,5,1.0),
+            ShowTagRatingAverage("clean",1.7,1,5,1.0))
+        itemsList.add(ShowRatingAverage(false,1,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+        itemsList.add(ShowRatingAverage(false,2,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+        itemsList.add(ShowRatingAverage(false,3,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+        itemsList.add(ShowRatingAverage(false,4,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+        itemsList.add(ShowRatingAverage(false,5,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+        itemsList.add(ShowRatingAverage(true,3,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+
     }
 
-
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//todo toast mit id
-    }
-
-    override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit
 
 
     companion object {
-
-        private const val NONE_SELECTED = -1
-
         @JvmStatic
         fun newInstance() = CreateCafeteriaRatingFragment()
     }

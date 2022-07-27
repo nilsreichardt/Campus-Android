@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
 import de.tum.`in`.tumcampusapp.R
 
-class CreateRatingAdapter(private var itemsList: List<TagRatingElement>) :
+class CreateRatingAdapter(private var itemsList: List<CreateTagRatingElement>) :
 RecyclerView.Adapter<CreateRatingAdapter.ViewHolder>() {
 
 

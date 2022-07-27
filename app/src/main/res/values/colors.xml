@@ -105,6 +105,12 @@
     <color name="error">#FFFF0000</color>
     <color name="valid">#7cbc49</color>
 
+    <color name="rating_1">#26318F11</color>
+    <color name="rating_2">#26C6E618</color>
+    <color name="rating_3">#26B8DC18</color>
+    <color name="rating_4">#26FDBF19</color>
+    <color name="rating_5">#26D50000</color>
+
     <color name="grade_1.0">#318F11</color>
     <color name="grade_1.1">#3F9711</color>
     <color name="grade_1.2">#4EA012</color>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="@color/design_default_color_secondary"
     tools:context=".component.ui.cafeteriarating.CreateCafeteriaRatingFragment">
 
     <include layout="@layout/toolbar" />
@@ -102,11 +103,11 @@
                         android:rating="4.5"
                         android:isIndicator="true"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/ratingRsultNumberTextView"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingResultNumberTextView"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/ratingRsultNumberTextView"
+                        android:id="@+id/ratingResultNumberTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4,5"

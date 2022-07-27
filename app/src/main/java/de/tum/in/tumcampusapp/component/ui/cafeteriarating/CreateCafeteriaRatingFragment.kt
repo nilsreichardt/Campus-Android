@@ -21,7 +21,7 @@ class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
     private val binding by viewBinding(FragmentCafeteriaRatingBinding::bind)
 
 
-    private val itemsList = ArrayList<TagRatingElement>()
+    private val itemsList = ArrayList<CreateTagRatingElement>()
     private lateinit var createTagRatingAdapter: CreateRatingAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,11 +57,11 @@ class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
     }
 
     private fun prepareItems() {
-        itemsList.add(TagRatingElement("Waiting time"))
-        itemsList.add(TagRatingElement("Variety General"))
-        itemsList.add(TagRatingElement("Variety Vegetarian"))
-        itemsList.add(TagRatingElement("Variety Vegan"))
-        itemsList.add (TagRatingElement("Enough free tables"))
+        itemsList.add(CreateTagRatingElement("Waiting time"))
+        itemsList.add(CreateTagRatingElement("Variety General"))
+        itemsList.add(CreateTagRatingElement("Variety Vegetarian"))
+        itemsList.add(CreateTagRatingElement("Variety Vegan"))
+        itemsList.add (CreateTagRatingElement("Enough free tables"))
 
 
 
