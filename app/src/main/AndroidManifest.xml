@@ -4,7 +4,40 @@
     package="de.tum.in.tumcampusapp"
     android:installLocation="auto"
     tools:ignore="UnusedAttribute">
-    <!-- Standard access rights -->
+
+    <meta-data
+        android:name="firebase_crashlytics_collection_enabled"
+        android:value="false" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" /> <!-- For google calendar synchronisation -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" /> <!-- To add searched person to contact list -->
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" /> <!-- For location services -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> <!-- For automatically setting up eduroam -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- FCM requires a Google account. -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- Allow vibration for chat messages -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- As AndroidLint suggests: We do not necessarily need camera access -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- For QR code scanner -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To start the Silence and Background service on Boot -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- To potentially change the Do Not Disturb mode -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Do not collect crashes by default -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -16,9 +49,11 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ShowCafeteriaRatingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".CafeteriaRating"
             android:exported="false" />
-
         <activity
             android:name=".component.ui.onboarding.StartupActivity"
             android:configChanges="orientation|screenSize"
@@ -34,13 +69,11 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
-
         <activity
             android:name=".component.ui.overview.MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/home"
             android:launchMode="singleTop" />
-
         <activity
             android:name=".component.other.generic.activity.BaseNavigationActivity"
             android:configChanges="orientation|screenSize"
@@ -50,7 +83,6 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".component.ui.news.NewsActivity"
             android:configChanges="orientation|screenSize"
@@ -80,7 +112,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".component.ui.overview.MainActivity" />
         </activity>
-
         <activity
             android:name=".component.ui.openinghour.OpeningHoursDetailActivity"
             android:configChanges="orientation|screenSize"
@@ -192,12 +223,12 @@
         <activity
             android:name=".component.tumui.person.PersonDetailsActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/person_information"></activity>
+            android:label="@string/person_information" />
         <activity
             android:name=".component.tumui.roomfinder.RoomFinderDetailsActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/roomfinder"
-            android:theme="@style/AppTheme.NoDrawerLayout"></activity>
+            android:theme="@style/AppTheme.NoDrawerLayout" />
         <activity
             android:name=".component.ui.studyroom.StudyRoomsActivity"
             android:configChanges="orientation|screenSize"
@@ -262,11 +293,11 @@
         <activity
             android:name=".component.tumui.calendar.NavigaTUMActivity"
             android:exported="false"
-            android:label="NavigaTUM"></activity>
+            android:label="NavigaTUM" />
         <activity
             android:name=".component.tumui.calendar.CreateEventActivity"
             android:label="@string/activity_create_event_title"
-            android:parentActivityName=".component.tumui.calendar.CalendarActivity"></activity>
+            android:parentActivityName=".component.tumui.calendar.CalendarActivity" />
         <activity
             android:name=".component.ui.chat.activity.ChatRoomsActivity"
             android:configChanges="orientation|screenSize"
@@ -361,7 +392,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -433,7 +463,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".component.ui.overview.MainActivity" />
         </activity>
-
         <activity
             android:name=".component.ui.ticket.activity.PaymentConfirmationActivity"
             android:configChanges="orientation|screenSize"
@@ -453,7 +482,6 @@
             android:name=".component.ui.transportation.MVVStationSuggestionProvider"
             android:authorities="de.tum.in.tumcampusapp.component.ui.transportation.MVVStationSuggestionProvider"
             android:exported="false" />
-
         <provider
             android:name=".component.tumui.lectures.LectureSearchSuggestionProvider"
             android:authorities="de.tum.in.tumcampusapp.component.tumui.lectures.LectureSearchSuggestionProvider"
@@ -475,7 +503,6 @@
                 <action android:name="android.net.wifi.SCAN_RESULTS" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".component.ui.cafeteria.widget.MensaWidget"
             android:exported="true"
@@ -501,7 +528,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/mvv_widget_info" />
         </receiver>
-
         <receiver
             android:name=".component.tumui.calendar.widget.TimetableWidget"
             android:exported="true"
@@ -535,7 +561,6 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".component.notifications.receivers.NotificationReceiver" />
-
         <receiver android:name=".component.notifications.receivers.NotificationAlarmReceiver" />
         <receiver android:name=".component.tumui.grades.GradeNotificationDeleteReceiver" />
 
@@ -559,7 +584,6 @@
             android:name=".service.QueryLocationsService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
         <service
             android:name=".service.FcmReceiverService"
             android:enabled="true"
@@ -572,39 +596,8 @@
         <service
             android:name=".service.GeofencingRegistrationService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <uses-library android:name="android.test.runner" />
     </application>
-    <meta-data
-        android:name="firebase_crashlytics_collection_enabled"
-        android:value="false" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" /> <!-- For google calendar synchronisation -->
-    <uses-feature
-        android:name="android.hardware.camera.autofocus"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.location.network"
-        android:required="false" /> <!-- To add searched person to contact list -->
-    <uses-feature
-        android:name="android.hardware.location.gps"
-        android:required="false" /> <!-- For location services -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> <!-- For automatically setting up eduroam -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- FCM requires a Google account. -->
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- Allow vibration for chat messages -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- As AndroidLint suggests: We do not necessarily need camera access -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- For QR code scanner -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To start the Silence and Background service on Boot -->
-    <uses-permission android:name="android.permission.VIBRATE" /> <!-- To potentially change the Do Not Disturb mode -->
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- Do not collect crashes by default -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
 </manifest>

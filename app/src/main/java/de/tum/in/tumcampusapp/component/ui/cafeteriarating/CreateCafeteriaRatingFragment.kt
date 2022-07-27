@@ -2,23 +2,17 @@ package de.tum.`in`.tumcampusapp.component.ui.cafeteriarating
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import de.tum.`in`.tumcampusapp.R
 import de.tum.`in`.tumcampusapp.component.other.generic.fragment.FragmentForAccessingTumCabe
 import de.tum.`in`.tumcampusapp.databinding.FragmentCafeteriaRatingBinding
-import de.tum.`in`.tumcampusapp.databinding.FragmentGradesBinding
 
 
-class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
+class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
     R.layout.fragment_cafeteria_rating,
     R.string.cafeteria_rating
 ), AdapterView.OnItemSelectedListener {
@@ -141,7 +135,7 @@ class CafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
         private const val NONE_SELECTED = -1
 
         @JvmStatic
-        fun newInstance() = CafeteriaRatingFragment()
+        fun newInstance() = CreateCafeteriaRatingFragment()
     }
 
 }
