@@ -14,7 +14,7 @@ import de.tum.`in`.tumcampusapp.databinding.FragmentCafeteriaRatingBinding
 
 class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
     R.layout.fragment_cafeteria_rating,
-    R.string.cafeteria_rating
+    R.string.create_cafeteria_rating
 ), AdapterView.OnItemSelectedListener {
 
 
@@ -22,7 +22,7 @@ class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
 
 
     private val itemsList = ArrayList<TagRatingElement>()
-    private lateinit var createTagRatingAdapter: CreateTagRatingAdapter
+    private lateinit var createTagRatingAdapter: CreateRatingAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,25 +30,25 @@ class CreateCafeteriaRatingFragment : FragmentForAccessingTumCabe<List<String>>(
         val meals = arrayOf("Only The Cafeteria", "Pizza Margeritha")
         //  binding.pickCafeteriaSpinner;
         //  val spinner = findViewById(R.id.pickCafeteriaSpinner)
-        if (binding.pickCafeteriaSpinner != null) {
+        if (binding.pickCafeteriaCreateSpinner != null) {
             val adapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_spinner_dropdown_item, cafeterias
             )
-            binding.pickCafeteriaSpinner.adapter = adapter
+            binding.pickCafeteriaCreateSpinner.adapter = adapter
         }
 
-        if (binding.pickMealSpinner != null) {
+        if (binding.pickDishCreateSpinner != null) {
             val adapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_spinner_dropdown_item, meals
             )
-            binding.pickMealSpinner.adapter = adapter
+            binding.pickDishCreateSpinner.adapter = adapter
         }
         prepareItems()
 
         // val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        createTagRatingAdapter = CreateTagRatingAdapter(itemsList)
+        createTagRatingAdapter = CreateRatingAdapter(itemsList)
         val layoutManager = LinearLayoutManager(requireContext())
         binding.tagOptionListRecyclerView.layoutManager = layoutManager
         binding.tagOptionListRecyclerView.adapter = createTagRatingAdapter

@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import de.tum.`in`.tumcampusapp.R
-import de.tum.`in`.tumcampusapp.component.ui.cafeteria.CafeteriaNotificationSettingsAdapter
 
-class CreateTagRatingAdapter(private var itemsList: List<TagRatingElement>) :
-RecyclerView.Adapter<CreateTagRatingAdapter.ViewHolder>() {
+class CreateRatingAdapter(private var itemsList: List<TagRatingElement>) :
+RecyclerView.Adapter<CreateRatingAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

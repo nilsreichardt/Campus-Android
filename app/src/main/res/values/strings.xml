@@ -190,6 +190,8 @@
     <string name="common_info">General Information</string>
     <string name="menues">Cafeterias</string>
     <string name="cafeteria_rating">Cafeteria Rating</string>
+    <string name="view_cafeteria_rating">View Cafeteria Rating</string>
+    <string name="create_cafeteria_rating">create Cafeteria Rating</string>
     <string name="person_search">Person Search</string>
     <string name="roomfinder">Roomfinder</string>
     <string name="study_rooms">Study Rooms</string>
