@@ -14,7 +14,7 @@ import de.tum.`in`.tumcampusapp.databinding.FragmentShowCafeteriaRatingsBinding
 class ShowCafeteriaRatingsFragment : FragmentForAccessingTumCabe<List<String>>(
     R.layout.fragment_show_cafeteria_ratings,
     R.string.view_cafeteria_rating
-){
+) {
 
 
     private val binding by viewBinding(FragmentShowCafeteriaRatingsBinding::bind)
@@ -53,17 +53,68 @@ class ShowCafeteriaRatingsFragment : FragmentForAccessingTumCabe<List<String>>(
 
     private fun prepareItems() {
         val nameTagResults = listOf<ShowTagRatingAverage>(
-            ShowTagRatingAverage("clean",3.7,1,5,1.0),
-            ShowTagRatingAverage("clean",1.7,1,5,1.0))
-        itemsList.add(ShowRatingAverage(false,1,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
-        itemsList.add(ShowRatingAverage(false,2,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
-        itemsList.add(ShowRatingAverage(false,3,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
-        itemsList.add(ShowRatingAverage(false,4,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
-        itemsList.add(ShowRatingAverage(false,5,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
-        itemsList.add(ShowRatingAverage(true,3,"Important comment on this beautiful rating",nameTagResults,nameTagResults))
+            ShowTagRatingAverage("bad", 1.0, 1, 5, 1.0),
+            ShowTagRatingAverage("Variety Vegetarian", 2.0, 1, 5, 1.0),
+            ShowTagRatingAverage("Variety Vegan", 3.0, 1, 5, 1.0),
+            ShowTagRatingAverage("something", 4.0, 1, 5, 1.0),
+            ShowTagRatingAverage("clean", 5.0, 1, 5, 1.0)
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                false,
+                1,
+                "Important comment on this beautiful rating. Sometimes, a comment must be longer than one line",
+                nameTagResults,
+                nameTagResults
+            )
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                false,
+                2,
+                "",
+                nameTagResults,
+                nameTagResults
+            )
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                false,
+                3,
+                "",
+                nameTagResults,
+                nameTagResults
+            )
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                false,
+                4,
+                "Important comment on this beautiful rating",
+                nameTagResults,
+                nameTagResults
+            )
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                false,
+                5,
+                "Important comment on this beautiful rating",
+                nameTagResults,
+                nameTagResults
+            )
+        )
+        itemsList.add(
+            ShowRatingAverage(
+                true,
+                3,
+                "Important comment on this beautiful rating",
+                nameTagResults,
+                nameTagResults
+            )
+        )
 
     }
-
 
 
     companion object {

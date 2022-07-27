@@ -2,7 +2,6 @@ package de.tum.`in`.tumcampusapp.component.ui.cafeteriarating
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,10 +45,8 @@ class ShowRatingAdapter(private var itemsList: List<ShowRatingAverage>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemsList[position]
-        //holder.itemTextView.text = item.tagLabel
-        //todo set visibilities according to values
-        //todo after chip was clicked -> more informationn in another textvview below, or chaning the chip text itself
-        if (item.img) {
+
+         if (item.img) {
             holder.showRatingImageViewHolder.visibility = View.VISIBLE
         }
         if (item.comment.length > 0) {
@@ -58,65 +55,85 @@ class ShowRatingAdapter(private var itemsList: List<ShowRatingAverage>) :
         }
 
         if (item.points == 1) {
-            holder.listItemHolderCardView.setBackgroundColor(ContextCompat.getColor(context, R.color.rating_1))
+            holder.listItemHolderCardView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.rating_1
+                )
+            )
         } else if (item.points == 2) {
-            holder.listItemHolderCardView.setBackgroundColor(ContextCompat.getColor(context, R.color.rating_2))
+            holder.listItemHolderCardView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.rating_2
+                )
+            )
         } else if (item.points == 3) {
-            holder.listItemHolderCardView.setBackgroundColor(ContextCompat.getColor(context, R.color.rating_3))
+            holder.listItemHolderCardView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.rating_3
+                )
+            )
         } else if (item.points == 4) {
-            holder.listItemHolderCardView.setBackgroundColor(ContextCompat.getColor(context, R.color.rating_4))
+            holder.listItemHolderCardView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.rating_4
+                )
+            )
         } else {
-            holder.listItemHolderCardView.setBackgroundColor(ContextCompat.getColor(context, R.color.rating_5))
+            holder.listItemHolderCardView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.rating_5
+                )
+            )
         }
 
         holder.singleRatingPointsRatingBar.rating = item.points.toFloat()
-        //   holder.ratingResultNumberTextView.text=item.points.toString()
-        setupChip(holder.chipGroup)
+        setupChip(holder.chipGroup, item.RatingTagsResults)
     }
 
     override fun getItemCount(): Int {
         return itemsList.size
     }
 
-    //todo wenn ausgewählt, dann in einer liste untendrunter anzeigen -> invertierte Notenfarben verwenden, ab einem bestimmten wert auch die schriftfarbe mit veränder damit besser lesbar
-    //todo add click listener -> show number or stars if necessary
-    private fun setupChip(chipGroup: ChipGroup) {
-        val nameList =
-            arrayListOf("Elevator", "Washer / Dryer", "Fireplace", "Wheelchair Access", "Dogs OK")
-        for (name in nameList) {
-            val chip = createChip(name)
+    private fun setupChip(chipGroup: ChipGroup, ratingTagsResults: List<ShowTagRatingAverage>) {
+
+        for (tag in ratingTagsResults) {
+            val chip = createChip(tag)
 
             chipGroup.addView(chip)
         }
     }
 
-    private fun createChip(label: String): Chip {
+    private fun createChip(label: ShowTagRatingAverage): Chip {
         val chip = Chip(context)
-        // chip.setBackgroundColor(R.color.grade_1_0)
+
+        var colorHelper = R.color.rating_1_0
+        if (label.points == 2.0) {
+            colorHelper = R.color.rating_2_0
+        } else if (label.points == 3.0) {
+            colorHelper = R.color.rating_3_0
+        } else if (label.points == 4.0) {
+            colorHelper = R.color.rating_4_0
+        } else if (label.points == 5.0) {
+            colorHelper = R.color.rating_5_0
+        }
+
         chip.chipBackgroundColor = ColorStateList.valueOf(
             ContextCompat.getColor(
                 context,
-                R.color.grade_1_0
+                colorHelper
             )
-        )//getColorStateList("R.color.grade_1_0");
-        chip.text = label
-
-        //chip.isCloseIconVisible = false
-        // chip.setChipIconResource(R.drawable.ic_baseline_android_24)
-
-        //  chip.setOnCloseIconClickListener {
-        //      chipGroup.removeView(chip)
-        //  }
-        chip.setOnClickListener(
-            View.OnClickListener {
-                Toast.makeText(context, "chip clicked", Toast.LENGTH_SHORT).show()
-            }
         )
+        chip.text = label.tagLabel
 
-        //  CafeteriaTagChipBinding.inflate(R.layout.cafeteria_tag_chip)
+        chip.setOnClickListener {
+            Toast.makeText(context, "Rating: "+label.points, Toast.LENGTH_SHORT).show()
+        }
 
-        // val chip = ChipBinding.inflate(layoutInflater).root
-        // chip.text = label
         return chip
     }
 }

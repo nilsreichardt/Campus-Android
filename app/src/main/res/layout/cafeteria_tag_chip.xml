@@ -5,4 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:id="@+id/filerChip_ID" />
+    android:id="@+id/filerChip_ID">
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@android:style/Widget.Material.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:numStars="5"
+        android:stepSize="1" />
+</com.google.android.material.chip.Chip>
