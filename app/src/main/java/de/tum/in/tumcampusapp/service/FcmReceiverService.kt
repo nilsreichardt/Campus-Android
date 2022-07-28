@@ -1,6 +1,5 @@
 package de.tum.`in`.tumcampusapp.service
 
-import android.os.Bundle
 import androidx.annotation.IntDef
 import com.google.firebase.installations.FirebaseInstallations
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -9,7 +8,6 @@ import de.tum.`in`.tumcampusapp.api.app.TUMCabeClient
 import de.tum.`in`.tumcampusapp.component.other.general.UpdatePushNotification
 import de.tum.`in`.tumcampusapp.component.other.generic.PushNotification
 import de.tum.`in`.tumcampusapp.component.ui.alarm.AlarmPushNotification
-import de.tum.`in`.tumcampusapp.component.ui.chat.ChatPushNotification
 import de.tum.`in`.tumcampusapp.utils.Const
 import de.tum.`in`.tumcampusapp.utils.Utils
 import org.jetbrains.anko.notificationManager
@@ -30,7 +28,7 @@ class FcmReceiverService : FirebaseMessagingService() {
 
         // Legacy messages need to be handled - maybe some data is missing?
         if (!data.containsKey(PAYLOAD) || !data.containsKey("type")) {
-            handleLegacyNotification(data)
+            // TODO: is this path nessesary?????
             return
         }
 
@@ -63,7 +61,6 @@ class FcmReceiverService : FirebaseMessagingService() {
         val appContext = applicationContext
 
         return when (type) {
-            CHAT_NOTIFICATION -> ChatPushNotification.fromJson(payload, appContext, notificationId)
             UPDATE -> UpdatePushNotification(payload, appContext, notificationId)
             ALERT -> AlarmPushNotification(payload, appContext, notificationId)
             else -> {
@@ -77,23 +74,6 @@ class FcmReceiverService : FirebaseMessagingService() {
                 }
                 null
             }
-        }
-    }
-
-    /**
-     * Try to support old notifications by matching it as a legacy chat notificationId
-     * TODO(kordianbruck): do we still need this?
-     */
-    private fun handleLegacyNotification(data: Map<String, String>) {
-        try {
-            val bundle = Bundle().apply {
-                data.entries.forEach { entry -> putString(entry.key, entry.value) }
-            }
-            ChatPushNotification.fromBundle(bundle, this, -1)?.also {
-                postNotification(it)
-            }
-        } catch (e: Exception) {
-            Utils.log(e)
         }
     }
 
