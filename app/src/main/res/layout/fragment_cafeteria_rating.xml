@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,9 @@
     android:orientation="vertical"
     tools:context=".component.ui.cafeteriarating.CreateCafeteriaRatingFragment">
 
-    <include layout="@layout/toolbar" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
 
 
     <LinearLayout
@@ -16,6 +18,9 @@
         android:layout_margin="@dimen/material_small_padding"
         android:background="@color/default_window_background"
         android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:visibility="visible">
 
         <FrameLayout
@@ -101,20 +106,9 @@
 
 
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/addPhoto"
-                style="@style/BlueButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="true"
-                android:text="Send Rating"
-                android:textAllCaps="false"
-                app:cornerRadius="@dimen/material_corner_radius" />
-
-
         <ScrollView
             android:layout_width="match_parent"
+            android:layout_marginTop="32dp"
             android:layout_height="match_parent">
 
             <LinearLayout
@@ -122,15 +116,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="48dp"
-                    android:layout_marginTop="@dimen/material_default_padding"
-                    android:text="Optional Fields"
-                    app:autoSizeMaxTextSize="28sp"
-                    app:autoSizeMinTextSize="10sp"
-                    app:autoSizeTextType="uniform" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine"
@@ -156,9 +141,24 @@
             </LinearLayout>
         </ScrollView>
 
+
+
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/tum_blue"
+        app:tint="@color/white"
+        android:clickable="true"
+        android:layout_marginRight="@dimen/material_default_padding"
+        android:layout_marginBottom="@dimen/material_default_padding"
+        android:src="@drawable/ic_action_send_now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
