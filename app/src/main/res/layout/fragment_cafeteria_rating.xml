@@ -105,6 +105,32 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/addImageButton"
+                android:layout_width="@dimen/add_thumbnail_button_size"
+                android:layout_height="@dimen/add_thumbnail_button_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/material_default_padding"
+                android:padding="@dimen/material_default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_outline_add_photo_alternate_24px"
+                android:tint="@color/color_primary"
+                app:cornerRadius="@dimen/material_corner_radius" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imageRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scrollbars="horizontal" />
+
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
