@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import de.tum.`in`.tumcampusapp.utils.ThemedAlertDialogBuilder
 import androidx.core.view.isVisible
 import de.tum.`in`.tumcampusapp.R
 import de.tum.`in`.tumcampusapp.api.tumonline.AccessTokenManager
@@ -34,18 +34,15 @@ class EventHelper {
             }
 
             val lrzId = Utils.getSetting(context, Const.LRZ_ID, "")
-            val chatRoomName = Utils.getSetting(context, Const.CHAT_ROOM_DISPLAY_NAME, "")
+
             val isLoggedIn = AccessTokenManager.hasValidAccessToken(context)
 
-            if (!isLoggedIn || lrzId.isEmpty() || chatRoomName.isEmpty()) {
-                val dialog = AlertDialog.Builder(context)
-                        .setTitle(R.string.error)
-                        .setMessage(R.string.not_logged_in_error)
-                        .setPositiveButton(R.string.ok, null)
-                        .create()
-
-                dialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_background)
-                dialog.show()
+            if (!isLoggedIn || lrzId.isEmpty()) {
+                ThemedAlertDialogBuilder(context)
+                    .setTitle(R.string.error)
+                    .setMessage(R.string.not_logged_in_error)
+                    .setPositiveButton(R.string.ok, null)
+                    .show()
                 return
             }
 
@@ -56,13 +53,11 @@ class EventHelper {
         }
 
         private fun showEventImminentDialog(context: Context) {
-            val dialog = AlertDialog.Builder(context)
-                    .setTitle(R.string.error)
-                    .setMessage(R.string.event_imminent_error)
-                    .setPositiveButton(R.string.ok, null)
-                    .create()
-            dialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_background)
-            dialog.show()
+            ThemedAlertDialogBuilder(context)
+                .setTitle(R.string.error)
+                .setMessage(R.string.event_imminent_error)
+                .setPositiveButton(R.string.ok, null)
+                .show()
         }
 
         /**

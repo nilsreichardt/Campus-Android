@@ -125,8 +125,8 @@ class EventsViewModel @Inject constructor(
                 .subscribe()
     }
 
-    fun refreshEventsAndTickets(isLoggedIn: Boolean) {
-        refreshRelay.accept(Action.Refresh(isLoggedIn))
+    fun refreshEventsAndTickets() {
+        refreshRelay.accept(Action.Refresh(true))
     }
 
     private fun render(viewState: EventsViewState) {

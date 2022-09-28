@@ -109,21 +109,6 @@ object Utils {
     }
 
     /**
-     * Get a value from the default shared preferences.
-     *
-     * @param c Context
-     * @param key setting name
-     * @param classInst e.g. ChatMember.class
-     * @return setting value
-     */
-    @JvmStatic
-    fun <T> getSetting(c: Context, key: String, classInst: Class<T>): T? {
-        val sp = PreferenceManager.getDefaultSharedPreferences(c)
-        val value = sp.getString(key, null) ?: return null
-        return Gson().fromJson(value, classInst)
-    }
-
-    /**
      * Return the boolean value of a setting.
      *
      * @param c Context
@@ -271,8 +256,8 @@ object Utils {
     fun setSetting(c: Context, key: String, value: Any) {
         val sp = PreferenceManager.getDefaultSharedPreferences(c)
         sp.edit()
-                .putString(key, Gson().toJson(value))
-                .apply()
+            .putString(key, Gson().toJson(value))
+            .apply()
     }
 
     /**
