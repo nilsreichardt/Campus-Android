@@ -4,6 +4,8 @@
 workflows:
   app_preview:
     name: app_preview
+    environment:
+      flutter: stable
     scripts:
       - script: echo "Hello"
       - script: flutter --version
