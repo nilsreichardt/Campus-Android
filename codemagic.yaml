@@ -1,0 +1,8 @@
+# This is example for using the codemagic_app_preview package in a
+# `codemagic.yaml`.
+
+workflows:
+  app_preview:
+    name: app_preview
+    scripts:
+      - script: echo "Test"
