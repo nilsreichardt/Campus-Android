@@ -6,4 +6,4 @@ workflows:
     name: app_preview
     scripts:
       - script: echo "Hello"
-      - script: dart --version
+      - script: flutter --version
